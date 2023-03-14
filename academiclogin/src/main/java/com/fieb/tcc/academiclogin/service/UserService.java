@@ -1,7 +1,20 @@
 package com.fieb.tcc.academiclogin.service;
 
-import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.stereotype.Service;
 
-public interface UserService extends UserDetails {
-//teste
+import com.fieb.tcc.academiclogin.model.User;
+import com.fieb.tcc.academiclogin.web.dto.UserDto;
+
+
+
+public interface UserService extends UserDetailsService {
+
+User save(UserDto userDto);
+User findByEmail(UserDto userDto);
+User update(User user);
+
+
+
+	
 }
