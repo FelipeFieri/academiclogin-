@@ -22,9 +22,9 @@ public class UserController {
 		
 		return "registration";
 	}
-	public String registerUserAccount(@ModelAttribute("user") UserDto userDto) {
+	/*public String registerUserAccount(@ModelAttribute("user") UserDto userDto) {
 		
 		userService.save(userDto);
 		return "redirect:registration?success";
-	}
+	}*/
 }
