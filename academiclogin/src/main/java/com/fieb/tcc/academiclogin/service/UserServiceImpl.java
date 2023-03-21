@@ -23,7 +23,6 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserRepository userRepository;
 	
-	
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 	
@@ -48,19 +47,19 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User save(UserDto userDto) {
 		
-		User user = new User(userDto.getFirstName(),
-						userDto.getLastName(),
-						userDto.getEmail(),
-						passwordEncoder.encode(userDto.getPassword()),
-						Arrays.asList(new Role("ROLE_USER")));
+		User user = new User(userDto.getFirstName(), 
+				             userDto.getLastName(), 
+				             userDto.getEmail(), 
+				             passwordEncoder.encode(userDto.getPassword()), 
+				             Arrays.asList(new Role("ROLE_USER")));
+		
 		
 		return userRepository.save(user);
 	}
 
 	@Override
 	public User findByEmail(UserDto userDto) {
-		// TODO Auto-generated method stub
-		return null;
+		return userRepository.findByEmail(userDto.getEmail());
 	}
 
 	@Override
@@ -69,4 +68,5 @@ public class UserServiceImpl implements UserService {
 		return null;
 	}
 	
+
 }
