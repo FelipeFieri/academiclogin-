@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Registration</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+     integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" 
+     crossorigin="anonymous">
+    <!-- <script src= "https://code.jquery.com/jquery-3.3.1.min.js"></script> --> 
+     
+     <script>
+    
+
+    </script>
+     
+     
+    <script type="text/javascript" src="/js/busca_cep.js"></script>
+</head>
+<body>
+	<!-- create navigation bar ( header) -->
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#" th:href="@{/users/home}">Registration and
+					Login Module</a>
+			</div>
+			
+			<div id="navbar" class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
+					<li><a th:href="@{/users/perfil/{username}(username=${username})}">Perfil</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+<br>
+<br>
+	<!-- Create HTML registration form -->
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+
+				<!-- success message -->
+				<div th:if="${param.success}">
+					<div class="alert alert-info">You've successfully registered
+						to our awesome app!</div>
+				</div>
+
+				<h1>Registration</h1>
+
+				<form th:action="@{/users/perfil}" method="post" th:object="${user}">
+					<div class="form-group">
+						<label class="control-label" for="firstName"> First Name </label>
+						<input id="firstName" class="form-control" th:field="*{firstName}"
+							required autofocus="autofocus" />
+					</div>
+
+					<div class="form-group">
+						<label class="control-label" for="lastName"> Last Name </label> <input
+							id="lastName" class="form-control" th:field="*{lastName}"
+							required autofocus="autofocus" />
+					</div>
+
+					<div class="form-group">
+						<label class="control-label" for="email"> Email </label> <input
+							id="email" class="form-control" th:field="*{email}" 
+							onblur=""
+							required
+							autofocus="autofocus" readonly/>	
+					</div>
+					
+					<div id="campo_email" class="alert alert-danger" style="display: none"></div>
+					
+					<div class="form-group">
+						<label class="control-label" for="cep"> Cep </label> <input
+							id="cep" class="form-control" th:field="*{cep}" 
+							onblur="pesquisacep(this.value);"
+							required
+							autofocus="autofocus" />	
+					</div>
+
+					<div class="form-group">
+						<label class="control-label" for="address"> Logradouro </label> <input
+						id="rua" class="form-control" th:field="*{address}"
+							required
+							autofocus="autofocus" />	
+					</div>
+					
+						<div class="form-group">
+				     <label class="control-label" for="number"> Número </label> <input
+							id="number" class="form-control" th:field="*{number}" 
+							required
+							autofocus="autofocus" />	
+					</div>
+					
+						
+						<div class="form-group">
+				     <label class="control-label" for="district"> Bairro </label> <input
+							id="bairro" class="form-control" th:field="*{district}" 
+							required
+							autofocus="autofocus" />	
+					</div>
+						<div class="form-group">
+						<label class="control-label" for="city"> Cidade</label> <input
+							id="cidade" class="form-control" th:field="*{city}"  
+							required
+							autofocus="autofocus" />	
+					</div>
+						<div class="form-group">
+						<label class="control-label" for="state"> Estado </label> <input
+							id="uf" class="form-control" th:field="*{state}"
+							required
+							autofocus="autofocus" />	
+					</div>
+					
+						<div class="form-group">
+						<label class="control-label" for="country"> País </label> <input
+							id="country" class="form-control" th:field="*{country}" 
+							required
+							autofocus="autofocus" />	
+					</div>
+
+					<div class="form-group">
+						<button type="submit" class="btn btn-success"
+						id="botao"
+						onclick=""
+						>Atualizar Perfil</button>
+						
+					</div>
+				</form>
+			</div>
+			
+			
+			
+			
+		</div>
+	</div>
+</body>
+</html>
